@@ -9,7 +9,7 @@ var jar = {
 
 var obi = {
 	health: "120",
-	healthMax: "150",
+	healthMax: "130",
 	attack: "6",
 	attackMax: "100",
 	counter: "21",
@@ -18,7 +18,7 @@ var obi = {
 
 var anakin = {
 	health: "100",
-	healthMax: "150",
+	healthMax: "130",
 	attack: "8",
 	attackMax: "100",
 	counter: "27",
@@ -27,7 +27,7 @@ var anakin = {
 
 var mace = {
 	health: "80",
-	healthMax: "150",
+	healthMax: "130",
 	attack: "12",
 	attackMax: "100",
 	counter: "32",
@@ -36,7 +36,7 @@ var mace = {
 
 var jango = {
 	health: "3",
-	healthMax: "150",
+	healthMax: "130",
 	attack: "300",
 	attackMax: "1000",
 	counter: "300",
@@ -104,12 +104,32 @@ $(document).ready(function() {
 
 				else {
 					playerChoose = i;
+					
+					//player bars: this section of code will update the enemy bars
+					if($ (characterId[i]).attr("id") === "jar") {
+						updatePlayerBars(jar,"jarJarHealth","jarJarAttack");
+					}
+					else if($ (characterId[i]).attr("id") === "obi") {
+						updatePlayerBars(obi,"obiWanHealth","obiWanAttack");
+					}
+					else if($ (characterId[i]).attr("id") === "anakin") {
+						updatePlayerBars(anakin,"anakinHealth","anakinAttack");
+					}
+					else if($ (characterId[i]).attr("id") === "mace") {
+						updatePlayerBars(mace,"maceWinduHealth","maceWinduAttack");
+					}
+					else if($ (characterId[i]).attr("id") === "jango") {
+						updatePlayerBars(jango,"jangoFettHealth","jangoFettAttack");
+					}
+					//player bars:=============================
 				}
 			}
 			enemyCount = 0;
 
 			//this command moves clicked character to far left
 			$(".character1").append(this);
+
+
 
 
 			//this command removes the chosen player from the array of characters
@@ -159,8 +179,8 @@ function updateEnemyBars (fighterClass, fighterHealthClass, fighterCounterClass)
 
 	counterPercent = ((fighterClass.counter * 100) / fighterClass.counterMax);
 
-	console.log("health percent: " + healthPercent);
-	console.log("counter percent: " + counterPercent);
+	console.log("enemy health percent: " + healthPercent);
+	console.log("enemy counter percent: " + counterPercent);
 	
 	//these commands update the bars in the character
 	$ ("." + fighterHealthClass).css("width",healthPercent + "%");
@@ -169,6 +189,24 @@ function updateEnemyBars (fighterClass, fighterHealthClass, fighterCounterClass)
 }
 //updateEnemyBars: =========================================
 
+
+//updatePlayerBars: this function updates the health and attack bars of the player
+function updatePlayerBars (fighterClass, fighterHealthClass, fighterAttackClass) {
+	var healthPercent;
+	var attackPercent;
+
+	healthPercent = ((fighterClass.health * 100) / fighterClass.healthMax);
+
+	attackPercent = ((fighterClass.attack * 100) / fighterClass.attackMax);
+
+	console.log("player health percent: " + healthPercent);
+	console.log("player attack percent: " + attackPercent);
+
+
+	$ ("." + fighterHealthClass).css("width",healthPercent + "%");
+	$ ("." + fighterAttackClass).css("width",attackPercent + "%");
+}
+//updatePlayerBars: ==========================================
 
 
 
