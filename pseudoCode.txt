@@ -1,0 +1,19 @@
+5 characters
+
+-intro screen
+	-displays all the characters and their stats
+-click on a character, character enters the main screen
+-click on another character, character enters defender screen
+-fight enemy
+	-attack
+	-counterattack
+	-reduce health
+-next enemy
+
+
+
+Sections:
+-Your character
+-Enemies to battle
+-Attack button
+Current enemy

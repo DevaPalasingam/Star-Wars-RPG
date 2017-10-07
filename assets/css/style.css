@@ -1,0 +1,9 @@
+body {
+	background-image: url(../images/background.jpg);
+	background-size: cover;
+}
+
+.container {
+	width: 100%;
+	padding-top: 20px;
+}
