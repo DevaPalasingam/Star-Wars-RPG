@@ -9,34 +9,34 @@ var jar = {
 
 var obi = {
 	health: "120",
-	healthMax: "120",
+	healthMax: "150",
 	attack: "6",
 	attackMax: "100",
 	counter: "21",
-	counterMax: "100"
+	counterMax: "30"
 };
 
 var anakin = {
 	health: "100",
-	healthMax: "120",
+	healthMax: "150",
 	attack: "8",
 	attackMax: "100",
 	counter: "27",
-	counterMax: "100"
+	counterMax: "30"
 };
 
 var mace = {
 	health: "80",
-	healthMax: "120",
+	healthMax: "150",
 	attack: "12",
 	attackMax: "100",
 	counter: "32",
-	counterMax: "100"
+	counterMax: "30"
 };
 
 var jango = {
 	health: "3",
-	healthMax: "100",
+	healthMax: "150",
 	attack: "300",
 	attackMax: "1000",
 	counter: "300",
@@ -75,12 +75,33 @@ $(document).ready(function() {
 			var playerChoose;
 
 
-			// this loop will move all non-clicked characters to enemies area
+			//move enemies: this loop will move all non-clicked characters to enemies area
 			for(var i = 0; i < characterId.length; i++) {
 				if (this !== characterId[i]) {
 					$(enemyId[enemyCount]).append(characterId[i]);
 					enemyCount++;
+
+					//enemy bars: this section of code will update the enemy bars
+					if($ (characterId[i]).attr("id") === "jar") {
+						updateEnemyBars(jar,"jarJarHealth","jarJarAttack");
+					}
+					else if($ (characterId[i]).attr("id") === "obi") {
+						updateEnemyBars(obi,"obiWanHealth","obiWanAttack");
+					}
+					else if($ (characterId[i]).attr("id") === "anakin") {
+						updateEnemyBars(anakin,"anakinHealth","anakinAttack");
+					}
+					else if($ (characterId[i]).attr("id") === "mace") {
+						updateEnemyBars(mace,"maceWinduHealth","maceWinduAttack");
+					}
+					else if($ (characterId[i]).attr("id") === "jango") {
+						updateEnemyBars(jango,"jangoFettHealth","jangoFettAttack");
+					}
+					//enemy bars:=============================
+
 				}
+				//move enemies: ================================	
+
 				else {
 					playerChoose = i;
 				}
@@ -90,9 +111,11 @@ $(document).ready(function() {
 			//this command moves clicked character to far left
 			$(".character1").append(this);
 
+
 			//this command removes the chosen player from the array of characters
 			characterId.splice(playerChoose,1);
 			console.log (characterId);
+
 		
 		}
 		//first click:==========================================
@@ -118,3 +141,35 @@ $(document).ready(function() {
 
 });
 //this closes the document.ready function
+
+
+
+
+
+
+//functions: this area is for functions=======================
+
+
+//updateEnemyBars: this function will update the health and counter bars of the enemies
+function updateEnemyBars (fighterClass, fighterHealthClass, fighterCounterClass) {
+	var healthPercent;
+	var counterPercent;
+
+	healthPercent = ((fighterClass.health * 100) / fighterClass.healthMax);
+
+	counterPercent = ((fighterClass.counter * 100) / fighterClass.counterMax);
+
+	console.log("health percent: " + healthPercent);
+	console.log("counter percent: " + counterPercent);
+	
+	//these commands update the bars in the character
+	$ ("." + fighterHealthClass).css("width",healthPercent + "%");
+	$ ("." + fighterCounterClass).css("width",counterPercent + "%");
+
+}
+//updateEnemyBars: =========================================
+
+
+
+
+//functions:===============================================

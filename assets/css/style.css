@@ -23,3 +23,36 @@ body {
 h1 {
 	color: white;
 }
+
+
+
+
+/*bars: this section is for the health and attack bars*/
+.jarJarHealth {
+	width: 100%;
+}
+.jarJarAttack {
+	width: 1%;
+}
+
+.obiWanHealth {
+	width: 70%;
+}
+.obiWanAttack {
+	width: 50%;
+}
+
+.anakinHealth {
+	width: 60%;
+}
+.anakinAttack {
+	width: 60%;
+}
+
+.maceWinduHealth {
+	width: 50%;
+}
+.maceWinduAttack {
+	width: 70%;
+}
+/*=====================================================*/
