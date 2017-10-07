@@ -3,6 +3,10 @@ body {
 	background-size: cover;
 }
 
+#duelText {
+	text-align: right;
+}
+
 .container {
 	width: 100%;
 	padding-top: 20px;
