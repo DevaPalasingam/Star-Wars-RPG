@@ -9,7 +9,7 @@ var jar = {
 	baseAttack: 1,
 	attack: 1,
 	attackMax: 100,
-	counter: 3,
+	counter: 4,
 	counterMax: 35
 };
 
@@ -64,7 +64,7 @@ var jango = {
 	location: document.querySelector("#jango"),
 	healthClass: "jangoFettHealth",
 	attackClass: "jangoFettAttack",
-	health: 3,
+	health: 4,
 	healthMax: 130,
 	baseAttack: 300,
 	attack: 300,
@@ -97,6 +97,8 @@ var gameOver = false;
 
 $(document).ready(function() {
 
+
+
 	//fighter click: this section of code will run if someone clicks on one of the characters
 	$(".fighter").on("click", function() {
 
@@ -108,6 +110,8 @@ $(document).ready(function() {
 
 		//first click: this whole section of code will only work on the very first click
 		if (gameStart === true) {
+
+			document.querySelector(".message").innerHTML = "Choose your opponent";
 			
 			gameStart = false;
 			console.log(this);
@@ -246,7 +250,12 @@ $(document).ready(function() {
 	//attack click: this section of code will run if someone clicks the attack button
 	$ (".attackButton").on("click", function() {
 
+		if (gameOver === true) {
+			return;
+		}
+
 		if(attackTime === false) {
+			console.log("it's not attack time");
 			return;
 		}
 		else {
@@ -310,6 +319,8 @@ function updatePlayerBars (fighterClass, fighterHealthClass, fighterAttackClass)
 //fight: this function controls the actual battle portion
 function fight () {
 	
+	document.querySelector(".message").innerHTML = "You attack " + currentVillain.name + " for " + mainHero.attack + " damage. "
+
 	//reduces villains health
 	currentVillain.health = currentVillain.health - mainHero.attack;
 
@@ -323,6 +334,7 @@ function fight () {
 	//this if statement will run if the villain hasn't died yet
 	if (currentVillain.health > 0) {
 		mainHero.health = mainHero.health - currentVillain.counter;
+		$ (".message").append("<br>" + currentVillain.name + " counters for " + currentVillain.counter + " damage.")
 	}
 
 	//this will update each character's bars
@@ -332,7 +344,20 @@ function fight () {
 	
 	//this if statement will run if the villain has died
 	if (currentVillain.health <= 0) {
+		attackTime = false;
+		$ (".duelArea").empty();
 
+		if (fightersRemaining.length === 0) {
+			gameOver = true;
+			document.querySelector(".message").innerHTML = "You are victorious";
+		}
+	}
+
+
+	if (mainHero.health <= 0) {
+		gameOver = true;
+		console.log("sorry game over");
+		document.querySelector(".message").innerHTML = "Game Over"
 	}
 
 
@@ -346,6 +371,8 @@ function duelMove (fighterClass) {
 	var duelistLocation;
 
 	attackTime = true;
+
+	document.querySelector(".message").innerHTML = "Click on Attack to fight"
 
 
 	//who villain: this section of code figures out who the chosen duelist is

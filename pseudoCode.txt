@@ -34,5 +34,7 @@ fight code
 -attack increases attack
 
 -check for dead
--prepare to move another enemy
--check for game over
+	-prepare to move another enemy
+		-clear duel zone
+		-turn off attack time
+	-check for game over
