@@ -63,6 +63,8 @@ var jango = {
 	counterMax: "300"
 };
 
+var fightersRemaining = [jar, obi, anakin, mace, jango];
+
 var characterId = [];
 characterId[0] = document.querySelector("#jar");
 characterId[1] = document.querySelector("#obi");
@@ -100,6 +102,16 @@ $(document).ready(function() {
 			gameStart = false;
 			console.log(this);
 			var playerChoose;
+
+			//update remaining: this section of code removes the chosen fighter from the array of fighters remaining
+			for (var w = 0; w < fightersRemaining.length; w++) {
+				if (fightersRemaining[w].id === $ (this).attr("id")) {
+					fightersRemaining.splice(w,1);
+					console.log("fighters remaining: ");
+					console.log(fightersRemaining);
+				}
+			}
+			//update remaining:============================
 
 
 			//move enemies: this loop will move all non-clicked characters to enemies area
@@ -188,6 +200,7 @@ $(document).ready(function() {
 			
 			//this will stop the user from clicking on characters if it's time to battle
 			if (attackTime === true) {
+				console.log("no clicking on characters. it's time to fight")
 				return;
 			}
 
@@ -276,6 +289,11 @@ function fight () {
 //duelMove: this function moves the clicked enemy into the duel zone
 function duelMove (fighterClass) {
 
+	var duelistLocation;
+
+	attackTime = true;
+
+
 	//who villain: this section of code figures out who the chosen duelist is
 	if ($ (fighterClass).attr("id") === "jar") {
 		currentVillain = jar;
@@ -302,7 +320,29 @@ function duelMove (fighterClass) {
 		console.log("current villain is: ");
 		console.log(currentVillain);
 	};
+	//who villain: =======================================
 
+
+	//update remaining: this section of code removes the chosen fighter from the array of fighters remaining
+	for (var w = 0; w < fightersRemaining.length; w++) {
+		if (fightersRemaining[w].id === $ (fighterClass).attr("id")) {
+			fightersRemaining.splice(w,1);
+			console.log("fighters remaining: ");
+			console.log(fightersRemaining);
+		}
+	}
+	//update remaining:===================================
+
+
+	//duel zone: this section of code moves the duelist to the duel zone
+
+	//duel zone:==============================================
+
+
+
+	//move villains: this section of code will move all the villains where they're supposed to be
+		
+	//move villains: ======================================
 
 }
 //duelMove: =================================================

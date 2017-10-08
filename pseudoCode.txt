@@ -22,8 +22,9 @@ Current enemy
 
 duel zone code
 -figure out which enemy was clicked
--move him to the duel zone
 -put him in currentVillain
+-make attackTime true
+
+-move him to the duel zone
 -splice him out of the enemy array
 -move all the enemies to their proper location
--make attackTime true
