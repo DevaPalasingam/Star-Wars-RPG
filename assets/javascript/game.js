@@ -8,7 +8,7 @@ var jar = {
 	healthMax: 1000,
 	baseAttack: 1,
 	attack: 1,
-	attackMax: 100,
+	attackMax: 150,
 	counter: 4,
 	counterMax: 35
 };
@@ -23,7 +23,7 @@ var obi = {
 	healthMax: 130,
 	baseAttack: 6,
 	attack: 6,
-	attackMax: 100,
+	attackMax: 150,
 	counter: 21,
 	counterMax: 35
 };
@@ -38,7 +38,7 @@ var anakin = {
 	healthMax: 130,
 	baseAttack: 8,
 	attack: 8,
-	attackMax: 100,
+	attackMax: 150,
 	counter: 27,
 	counterMax: 35
 };
@@ -53,7 +53,7 @@ var mace = {
 	healthMax: 130,
 	baseAttack: 12,
 	attack: 12,
-	attackMax: 100,
+	attackMax: 150,
 	counter: 32,
 	counterMax: 35
 };
@@ -372,7 +372,7 @@ function duelMove (fighterClass) {
 
 	attackTime = true;
 
-	document.querySelector(".message").innerHTML = "Click on Attack to fight"
+	document.querySelector(".message").innerHTML = "Click on Attack to fight. With each attack your character will get stronger."
 
 
 	//who villain: this section of code figures out who the chosen duelist is
