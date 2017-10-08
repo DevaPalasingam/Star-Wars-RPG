@@ -8,7 +8,7 @@ var jar = {
 	attack: "1",
 	attackMax: "100",
 	counter: "3",
-	counterMax: "100"
+	counterMax: "35"
 };
 
 var obi = {
@@ -21,11 +21,11 @@ var obi = {
 	attack: "6",
 	attackMax: "100",
 	counter: "21",
-	counterMax: "30"
+	counterMax: "35"
 };
 
 var anakin = {
-	name: "Anaking Skywalker",
+	name: "Anakin Skywalker",
 	id: "anakin",
 	healthClass: "anakinHealth",
 	attackClass: "anakinAttack",
@@ -34,7 +34,7 @@ var anakin = {
 	attack: "8",
 	attackMax: "100",
 	counter: "27",
-	counterMax: "30"
+	counterMax: "35"
 };
 
 var mace = {
@@ -47,7 +47,7 @@ var mace = {
 	attack: "12",
 	attackMax: "100",
 	counter: "32",
-	counterMax: "30"
+	counterMax: "35"
 };
 
 var jango = {
@@ -335,7 +335,7 @@ function duelMove (fighterClass) {
 
 
 	//duel zone: this section of code moves the duelist to the duel zone
-
+		$ (".duelArea").append(fighterClass);
 	//duel zone:==============================================
 
 
