@@ -4,12 +4,13 @@ var jar = {
 	location: document.querySelector("#jar"),
 	healthClass: "jarJarHealth",
 	attackClass: "jarJarAttack",
-	health: "1000",
-	healthMax: "1000",
-	attack: "1",
-	attackMax: "100",
-	counter: "3",
-	counterMax: "35"
+	health: 1000,
+	healthMax: 1000,
+	baseAttack: 1,
+	attack: 1,
+	attackMax: 100,
+	counter: 3,
+	counterMax: 35
 };
 
 var obi = {
@@ -18,12 +19,13 @@ var obi = {
 	location: document.querySelector("#obi"),
 	healthClass: "obiWanHealth",
 	attackClass: "obiWanAttack",
-	health: "120",
-	healthMax: "130",
-	attack: "6",
-	attackMax: "100",
-	counter: "21",
-	counterMax: "35"
+	health: 120,
+	healthMax: 130,
+	baseAttack: 6,
+	attack: 6,
+	attackMax: 100,
+	counter: 21,
+	counterMax: 35
 };
 
 var anakin = {
@@ -32,12 +34,13 @@ var anakin = {
 	location: document.querySelector("#anakin"),
 	healthClass: "anakinHealth",
 	attackClass: "anakinAttack",
-	health: "100",
-	healthMax: "130",
-	attack: "8",
-	attackMax: "100",
-	counter: "27",
-	counterMax: "35"
+	health: 100,
+	healthMax: 130,
+	baseAttack: 8,
+	attack: 8,
+	attackMax: 100,
+	counter: 27,
+	counterMax: 35
 };
 
 var mace = {
@@ -46,12 +49,13 @@ var mace = {
 	location: document.querySelector("#mace"),
 	healthClass: "maceWinduHealth",
 	attackClass: "maceWinduAttack",
-	health: "80",
-	healthMax: "130",
-	attack: "12",
-	attackMax: "100",
-	counter: "32",
-	counterMax: "35"
+	health: 80,
+	healthMax: 130,
+	baseAttack: 12,
+	attack: 12,
+	attackMax: 100,
+	counter: 32,
+	counterMax: 35
 };
 
 var jango = {
@@ -60,12 +64,13 @@ var jango = {
 	location: document.querySelector("#jango"),
 	healthClass: "jangoFettHealth",
 	attackClass: "jangoFettAttack",
-	health: "3",
-	healthMax: "130",
-	attack: "300",
-	attackMax: "1000",
-	counter: "300",
-	counterMax: "300"
+	health: 3,
+	healthMax: 130,
+	baseAttack: 300,
+	attack: 300,
+	attackMax: 1000,
+	counter: 400,
+	counterMax: 400
 };
 
 var fightersRemaining = [jar, obi, anakin, mace, jango];
@@ -239,7 +244,7 @@ $(document).ready(function() {
 
 
 	//attack click: this section of code will run if someone clicks the attack button
-	$ (".reset").on("click", function() {
+	$ (".attackButton").on("click", function() {
 
 		if(attackTime === false) {
 			return;
@@ -305,6 +310,32 @@ function updatePlayerBars (fighterClass, fighterHealthClass, fighterAttackClass)
 //fight: this function controls the actual battle portion
 function fight () {
 	
+	//reduces villains health
+	currentVillain.health = currentVillain.health - mainHero.attack;
+
+	//increases hero's attack power
+	mainHero.attack = mainHero.attack + mainHero.baseAttack;
+
+	console.log(currentVillain);
+	console.log(mainHero);
+
+	
+	//this if statement will run if the villain hasn't died yet
+	if (currentVillain.health > 0) {
+		mainHero.health = mainHero.health - currentVillain.counter;
+	}
+
+	//this will update each character's bars
+	updatePlayerBars(mainHero,mainHero.healthClass,mainHero.attackClass);
+	updateEnemyBars(currentVillain,currentVillain.healthClass,currentVillain.attackClass);
+
+	
+	//this if statement will run if the villain has died
+	if (currentVillain.health <= 0) {
+
+	}
+
+
 }
 //fight: ================================================
 

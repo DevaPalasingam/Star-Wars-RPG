@@ -25,7 +25,14 @@ duel zone code
 -put him in currentVillain
 -make attackTime true
 -move him to the duel zone
-
 -move all the enemies to their proper location
 	-write in characters to the needed zones
 	-clear the extra zones
+
+fight code
+-attack reduces health
+-attack increases attack
+
+-check for dead
+-prepare to move another enemy
+-check for game over
