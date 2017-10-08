@@ -224,15 +224,33 @@ $(document).ready(function() {
 		}
 		//other clicks: ========================================
 
-	
-
-
-
-
 
 
 	});
 	//fighter click: this closes the on-click function
+
+
+	//reset click: this function will refresh the page when someone clicks the reset button
+	$ (".reset").on("click", function() {
+		location.reload();
+	});
+	//reset click:========================================
+
+
+
+	//attack click: this section of code will run if someone clicks the attack button
+	$ (".reset").on("click", function() {
+
+		if(attackTime === false) {
+			return;
+		}
+		else {
+			fight();
+		}
+
+	});
+	//attack click:========================================
+
 
 });
 //this closes the document.ready function
@@ -286,7 +304,7 @@ function updatePlayerBars (fighterClass, fighterHealthClass, fighterAttackClass)
 
 //fight: this function controls the actual battle portion
 function fight () {
-
+	
 }
 //fight: ================================================
 
@@ -363,9 +381,10 @@ function duelMove (fighterClass) {
 			$ ("#enemy4").append(fightersRemaining[3].location);
 		}
 	//move villains: ======================================
-
 }
 //duelMove: =================================================
+
+
 
 
 //functions:===============================================
