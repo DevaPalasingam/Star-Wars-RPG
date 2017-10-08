@@ -1,4 +1,8 @@
 var jar = {
+	name: "Jar Jar Binks",
+	id: "jar",
+	healthClass: "jarJarHealth",
+	attackClass: "jarJarAttack",
 	health: "1000",
 	healthMax: "1000",
 	attack: "1",
@@ -8,6 +12,10 @@ var jar = {
 };
 
 var obi = {
+	name: "Obi Wan Kenobi",
+	id: "obi",
+	healthClass: "obiWanHealth",
+	attackClass: "obiWanAttack",
 	health: "120",
 	healthMax: "130",
 	attack: "6",
@@ -17,6 +25,10 @@ var obi = {
 };
 
 var anakin = {
+	name: "Anaking Skywalker",
+	id: "anakin",
+	healthClass: "anakinHealth",
+	attackClass: "anakinAttack",
 	health: "100",
 	healthMax: "130",
 	attack: "8",
@@ -26,6 +38,10 @@ var anakin = {
 };
 
 var mace = {
+	name: "Mace Windu",
+	id: "mace",
+	healthClass: "maceWinduHealth",
+	attackClass: "maceWinduAttack",
 	health: "80",
 	healthMax: "130",
 	attack: "12",
@@ -35,6 +51,10 @@ var mace = {
 };
 
 var jango = {
+	name: "Jango Fett",
+	id: "jango",
+	healthClass: "jangoFettHealth",
+	attackClass: "jangoFettAttack",
 	health: "3",
 	healthMax: "130",
 	attack: "300",
@@ -60,10 +80,17 @@ var enemyCount = 0;
 var gameStart = true;
 var attackTime = false;
 var mainHero;
+var currentVillain;
+var gameOver = false;
 
 $(document).ready(function() {
 
+	//fighter click: this section of code will run if someone clicks on one of the characters
 	$(".fighter").on("click", function() {
+
+		if (gameOver === true) {
+			return;
+		}
 		
 		
 
@@ -100,31 +127,44 @@ $(document).ready(function() {
 					//enemy bars:=============================
 
 				}
-				//move enemies: ================================	
+					
 
 				else {
 					playerChoose = i;
 					
-					//player bars: this section of code will update the enemy bars
+					//player bars: this section of code will update the player bars, and will update the mainHero var
 					if($ (characterId[i]).attr("id") === "jar") {
 						updatePlayerBars(jar,"jarJarHealth","jarJarAttack");
+						mainHero = jar;
+						console.log(mainHero);
 					}
 					else if($ (characterId[i]).attr("id") === "obi") {
 						updatePlayerBars(obi,"obiWanHealth","obiWanAttack");
+						mainHero = obi;
+						console.log(mainHero);
 					}
 					else if($ (characterId[i]).attr("id") === "anakin") {
 						updatePlayerBars(anakin,"anakinHealth","anakinAttack");
+						mainHero = anakin;
+						console.log(mainHero);
 					}
 					else if($ (characterId[i]).attr("id") === "mace") {
 						updatePlayerBars(mace,"maceWinduHealth","maceWinduAttack");
+						mainHero = mace;
+						console.log(mainHero);
 					}
 					else if($ (characterId[i]).attr("id") === "jango") {
 						updatePlayerBars(jango,"jangoFettHealth","jangoFettAttack");
+						mainHero = jango;
+						console.log(mainHero);
 					}
 					//player bars:=============================
 				}
 			}
 			enemyCount = 0;
+			//move enemies: ================================
+
+
 
 			//this command moves clicked character to far left
 			$(".character1").append(this);
@@ -145,6 +185,23 @@ $(document).ready(function() {
 
 		//Other clicks: this code will run on every other click
 		else {
+			
+			//this will stop the user from clicking on characters if it's time to battle
+			if (attackTime === true) {
+				return;
+			}
+
+			//this ends the function if the user clicks on the main character
+			else if (mainHero.id === ($ (this).attr("id"))) {
+				console.log("stop clicking on the hero");
+				return;
+			}
+			
+			//move enemy: this section of code is for moving an enemy to the duel zone
+			else {
+				duelMove(this);
+			}
+			//move enemy: =====================================
 
 		}
 		//other clicks: ========================================
@@ -157,7 +214,7 @@ $(document).ready(function() {
 
 
 	});
-	//this closes the on-click function
+	//fighter click: this closes the on-click function
 
 });
 //this closes the document.ready function
@@ -208,6 +265,47 @@ function updatePlayerBars (fighterClass, fighterHealthClass, fighterAttackClass)
 }
 //updatePlayerBars: ==========================================
 
+
+//fight: this function controls the actual battle portion
+function fight () {
+
+}
+//fight: ================================================
+
+
+//duelMove: this function moves the clicked enemy into the duel zone
+function duelMove (fighterClass) {
+
+	//who villain: this section of code figures out who the chosen duelist is
+	if ($ (fighterClass).attr("id") === "jar") {
+		currentVillain = jar;
+		console.log("current villain is: ");
+		console.log(currentVillain);
+	};
+	if ($ (fighterClass).attr("id") === "obi") {
+		currentVillain = obi;
+		console.log("current villain is: ");
+		console.log(currentVillain);
+	};
+	if ($ (fighterClass).attr("id") === "anakin") {
+		currentVillain = anakin;
+		console.log("current villain is: ");
+		console.log(currentVillain);
+	};
+	if ($ (fighterClass).attr("id") === "mace") {
+		currentVillain = mace;
+		console.log("current villain is: ");
+		console.log(currentVillain);
+	};
+	if ($ (fighterClass).attr("id") === "jango") {
+		currentVillain = jango;
+		console.log("current villain is: ");
+		console.log(currentVillain);
+	};
+
+
+}
+//duelMove: =================================================
 
 
 //functions:===============================================

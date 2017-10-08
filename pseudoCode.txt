@@ -17,3 +17,13 @@ Sections:
 -Enemies to battle
 -Attack button
 Current enemy
+
+
+
+duel zone code
+-figure out which enemy was clicked
+-move him to the duel zone
+-put him in currentVillain
+-splice him out of the enemy array
+-move all the enemies to their proper location
+-make attackTime true
