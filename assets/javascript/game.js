@@ -1,6 +1,7 @@
 var jar = {
 	name: "Jar Jar Binks",
 	id: "jar",
+	location: document.querySelector("#jar"),
 	healthClass: "jarJarHealth",
 	attackClass: "jarJarAttack",
 	health: "1000",
@@ -14,6 +15,7 @@ var jar = {
 var obi = {
 	name: "Obi Wan Kenobi",
 	id: "obi",
+	location: document.querySelector("#obi"),
 	healthClass: "obiWanHealth",
 	attackClass: "obiWanAttack",
 	health: "120",
@@ -27,6 +29,7 @@ var obi = {
 var anakin = {
 	name: "Anakin Skywalker",
 	id: "anakin",
+	location: document.querySelector("#anakin"),
 	healthClass: "anakinHealth",
 	attackClass: "anakinAttack",
 	health: "100",
@@ -40,6 +43,7 @@ var anakin = {
 var mace = {
 	name: "Mace Windu",
 	id: "mace",
+	location: document.querySelector("#mace"),
 	healthClass: "maceWinduHealth",
 	attackClass: "maceWinduAttack",
 	health: "80",
@@ -53,6 +57,7 @@ var mace = {
 var jango = {
 	name: "Jango Fett",
 	id: "jango",
+	location: document.querySelector("#jango"),
 	healthClass: "jangoFettHealth",
 	attackClass: "jangoFettAttack",
 	health: "3",
@@ -335,13 +340,28 @@ function duelMove (fighterClass) {
 
 
 	//duel zone: this section of code moves the duelist to the duel zone
+		console.log(fighterClass);
 		$ (".duelArea").append(fighterClass);
 	//duel zone:==============================================
 
 
 
 	//move villains: this section of code will move all the villains where they're supposed to be
-		
+		if (fightersRemaining.length >= 1) {
+			$ ("#enemy1").append(fightersRemaining[0].location);
+		}
+
+		if (fightersRemaining.length >= 2) {
+			$ ("#enemy2").append(fightersRemaining[1].location);
+		}
+
+		if (fightersRemaining.length >= 3) {
+			$ ("#enemy3").append(fightersRemaining[2].location);
+		}
+
+		if (fightersRemaining.length >= 4) {
+			$ ("#enemy4").append(fightersRemaining[3].location);
+		}
 	//move villains: ======================================
 
 }

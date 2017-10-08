@@ -24,7 +24,8 @@ duel zone code
 -figure out which enemy was clicked
 -put him in currentVillain
 -make attackTime true
-
 -move him to the duel zone
--splice him out of the enemy array
+
 -move all the enemies to their proper location
+	-write in characters to the needed zones
+	-clear the extra zones
