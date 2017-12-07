@@ -7,7 +7,7 @@ Demo: https://devapalasingam.github.io/Star-Wars-RPG/#
 ![Alt text](/assets/images/starWars.jpg?raw=true "Start Game")
 ![Alt text](/assets/images/duel.jpg?raw=true "Duel Screen")
 
-## How to play
+## How to Play
 
 The game is pretty straightforward. First choose your character. The green bar represents their health. The red bar represents their attack strength. 
 
