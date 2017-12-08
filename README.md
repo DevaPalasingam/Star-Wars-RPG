@@ -18,7 +18,7 @@ When you beat all of the remaining enemies, you win.
 
 ## Built With
 
-Html, CSS, and Javascript
+Html, CSS, Javascript, and Jquery
 
 
 ## Acknowledgments
