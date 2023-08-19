@@ -2,7 +2,7 @@
 
 Star Wars themed RPG. Jar Jar is the strongest character btw.
 
-Demo: https://devapalasingam.github.io/Star-Wars-RPG/#
+See it deployed [here] (https://devapalasingam.github.io/Star-Wars-RPG/#)
 
 ![Alt text](/assets/images/starWars.jpg?raw=true "Start Game")
 ![Alt text](/assets/images/duel.jpg?raw=true "Duel Screen")
